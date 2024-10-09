@@ -89,3 +89,7 @@ cv2.imshow('Scaled Image', scaled_matrix)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
+
+**Imagen resultante**
+
+![Resultados](Resultados/PixelArt.png)
