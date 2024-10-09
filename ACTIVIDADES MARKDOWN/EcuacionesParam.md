@@ -1,3 +1,12 @@
+# Actividad 6
+
+## Instrucciones
+
+*Programar al menos 10 ecuaciones paramétricas.*
+
+### Código base
+
+```python
 import numpy as np
 import cv2
 
@@ -54,3 +63,45 @@ while True:  # Bucle infinito
 
 # Cerrar la ventana al finalizar
 cv2.destroyAllWindows()
+```
+
+### Resultados
+
+**Imagen 1**
+![Ecuacion](Resultados/k=.09.png)
+
+**Imagen 2**
+![Ecuacion](Resultados/k=.2.png)
+
+**Imagen 3**
+![Ecuacion](Resultados/Ecuaciones%20modificadas.png)
+
+**Imagen 4**
+![Ecuacion](Resultados/k=2.png)
+
+**Imagen 5**
+![Ecuacion](Resultados/k=4.png)
+
+**Imagen 6**
+![Ecuacion](Resultados/k=9.png)
+
+**Imagen 7**
+![Ecuacion](Resultados/k=12.png)
+
+**Imagen 8**
+![Ecuacion](Resultados/k=20.png)
+
+**Imagen 9**
+![Ecuacion](Resultados/k=25.png)
+
+**Imagen 10**
+![Ecuacion](Resultados/k=40.png)
+
+
+### Extras
+
+**Imagen 1**
+![Ecuacion](Resultados/k=70.png)
+
+**Imagen 2**
+![Ecuacion](Resultados/k=150.png)
