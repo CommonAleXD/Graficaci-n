@@ -1,17 +1,15 @@
 import numpy as np
 import cv2 as cv
 
-# Función para generar un solo punto de la órbita en función del parámetro t
-def generar_punto_orbita(a, b, t, centro):
+def punto_orbita(a, b, t, centro):
     x = int(a * np.cos(t) + centro[0])  # Desplazamiento a la posición del sol
     y = int(b * np.sin(t) + centro[1])
     return (x, y)
 
 # Dimensiones de la imagen
-img_width, img_height = 1300, 1000
+ancho, alto = 1300, 1000
 
-# Crear una imagen en blanco
-imagen = np.zeros((img_height, img_width, 3), dtype=np.uint8)
+imagen = np.zeros((alto, ancho, 3), dtype=np.uint8)
 
 # Parámetros del sistema solar
 centro_sol = (650, 400)  
@@ -26,26 +24,25 @@ planetas = [
 ]
 num_puntos = 1000
 
-# Crear los valores del parámetro t para cada planeta
+# Valores por planeta
 t_vals = np.linspace(0, 2 * np.pi, num_puntos)
 
 # Animación
 for t in t_vals:
-    # Crear una nueva imagen en blanco en cada iteración
-    imagen = np.zeros((img_height, img_width, 3), dtype=np.uint8)
+    # Imagen por iteración
+    imagen = np.zeros((alto, ancho, 3), dtype=np.uint8)
     
-    # Dibujar el sol en el centro
     cv.circle(imagen, centro_sol, radius=30, color=(0, 255, 255), thickness=-1)
     
-    # Dibujar las órbitas de todos los planetas (trayectorias elípticas)
+    # Órbitas de todos los planetas
     for planeta in planetas:
         for t_tray in t_vals:
-            pt_tray = generar_punto_orbita(planeta['a'], planeta['b'], t_tray, centro_sol)
+            pt_tray = punto_orbita(planeta['a'], planeta['b'], t_tray, centro_sol)
             cv.circle(imagen, pt_tray, radius=1, color=(255, 255, 255), thickness=-1)
     
-    # Dibujar los planetas en su posición actual según el valor de t
+    # Planetas posición actual
     for planeta in planetas:
-        punto = generar_punto_orbita(planeta['a'], planeta['b'], t * planeta['velocidad'], centro_sol)
+        punto = punto_orbita(planeta['a'], planeta['b'], t * planeta['velocidad'], centro_sol)
         cv.circle(imagen, punto, radius=planeta['radio'], color=planeta['color'], thickness=-1)
     
     # Mostrar la imagen con los planetas en movimiento
